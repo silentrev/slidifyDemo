@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Predict the temperature of my apartment</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Predict the temperature of my apartment">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Predict the temperature of my apartment</h1>
+    <h2>My course project for Developing data products</h2>
+    <p><br/></p>
+  </hgroup>
+    <a href="https://github.com/silentrev/slidifyDemo/zipball/gh-pages" class="example">
+     Download
+    </a>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Apartment and logged temperature</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>My apartment is located in a building constructed in the 30s </li>
+<li>The building is poorly maintained and located in an open area close to the sea</li>
+<li>It is therefore quite exposed to the elements and I can notice a difference in indoor temperature depending on the weather</li>
+<li>About 18 months ago I installed a temperature logger in my apartment. This device records the indoor temperature every hour.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Weather data and regression model</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>I later paired the logged temperatures with weather data from a nearby weather station </li>
+<li>This data set was used to create a linear regression model that can predict the indoor temperature of my apartment.</li>
+<li><p>The following weather variables was used as regressors: </p>
+
+<ul>
+<li>The outdoor temperature</li>
+<li>The windspeed in m/s</li>
+<li>The solar irradiation, daily average global beam<br></li>
+</ul></li>
+<li><p>The model is obviously not very precise but can still give a picture of the climate in the apartment.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Linear regression model example</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Using the lienar regression model to calculate the indoor temperature</p>
+
+<pre><code class="r">wind &lt;- 8 # Set Windspeed
+temp &lt;- 5 # Set outdoor temperature
+sun &lt;- 100 # Set global beam
+
+indoorTemp = (21.21 + temp*0.013
+            -((21-temp)*wind*wind*0.000294) 
+            + sun*0.012)
+
+indoorTemp &lt;- round(indoorTemp,1)
+</code></pre>
+
+<p>With the weather parameters stated as above, the predicted temperature is 22.2 degrees celcius.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>How to use the shiny app</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>The app is easy to use. Change the weather parameters with the sliders to the left.</li>
+<li>You can choose to view the predicted temperature in fahrenheit or celcius.</li>
+<li>You will also find a short guide explaining the weather parameters.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Apartment and logged temperature'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Weather data and regression model'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Linear regression model example'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='How to use the shiny app'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
